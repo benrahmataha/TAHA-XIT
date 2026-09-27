@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAHA XIT VIP STORE - متجر المفاتيح والنقاط</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0d0f12;
+            --card-bg: #161b22;
+            --accent-color: #ff2a2a;
+            --accent-hover: #d61e1e;
+            --text-color: #f0f6fc;
+            --text-dim: #8b949e;
+            --border-color: #30363d;
+            --green-color: #2ea043;
+            --gold-color: #ffc107;
+            --purple-color: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .header h1 {
+            color: var(--accent-color);
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* إحصائيات عامة */
+        .global-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--border-color);
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        .global-stats div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .global-stats span {
+            color: var(--gold-color);
+            font-weight: bold;
+        }
+
+        /* شاشة تسجيل الدخول */
+        #auth-screen {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .input-email, .code-input {
+            width: 100%;
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-align: center;
+            outline: none;
+        }
+
+        .input-email:focus, .code-input:focus {
+            border-color: var(--accent-color);
+        }
+
+        .google-btn {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .google-btn:hover {
+            background: #e6e6e6;
+        }
+
+        /* لوحة التحكم الرئيسية */
+        .user-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-info i {
+            font-size: 24px;
+            color: var(--accent-color);
+        }
+
+        .points-badge {
+            background: rgba(255, 42, 42, 0.15);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            color: var(--text-dim);
+            margin: 20px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 15px;
+        }
+
+        /* لوحة الأدمن الخاصة */
+        .admin-card {
+            border: 1px solid var(--gold-color);
+            background: rgba(255, 193, 7, 0.05);
+        }
+
+        .admin-title {
+            color: var(--gold-color);
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-action {
+            width: 100%;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .btn-action:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-green { background: var(--green-color); }
+        .btn-green:hover { background: #238636; }
+
+        .btn-gold { background: var(--gold-color); color: #000; }
+        .btn-gold:hover { background: #e0a800; }
+
+        .btn-purple { background: var(--purple-color); color: #fff; }
+        .btn-purple:hover { background: #7c3aed; }
+
+        .btn-danger { background: #dc2626; color: #fff; }
+        .btn-danger:hover { background: #b91c1c; }
+
+        .key-result {
+            margin-top: 10px;
+            background: #0d1117;
+            border: 1px dashed var(--green-color);
+            color: #2ea043;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+            display: none;
+            word-break: break-all;
+        }
+
+        .key-result a { color: #4da6ff; text-decoration: underline; }
+
+        .ref-box { display: flex; gap: 8px; margin-top: 10px; }
+
+        .ref-input {
+            width: 100%;
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .btn-copy {
+            background: var(--border-color);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* شبكة لعبة الذاكرة (4x2 = 8 بطاقات / 4 أزواج) */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .memory-card {
+            aspect-ratio: 1;
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.3s;
+        }
+
+        .memory-card.flipped {
+            background: #21262d;
+            border-color: var(--accent-color);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- الهيدر -->
+        <div class="header">
+            <h1><i class="fa-solid fa-skull"></i> TAHA XIT VIP STORE</h1>
+        </div>
+
+        <!-- الإحصائيات العامة فوق -->
+        <div class="global-stats">
+            <div>عدد المستخدمين : <span id="stat-total-users">0</span></div>
+            <div>عدد المشتريين : <span id="stat-total-buyers">0</span></div>
+            <div>عدد النقاط الاجمالي لدى المستخدمين : <span id="stat-total-points">0</span></div>
+        </div>
+
+        <!-- 1. شاشة تسجيل الدخول -->
+        <div id="auth-screen">
+            <p style="margin-bottom: 15px; color: var(--text-dim);">تسجيل الدخول باستخدام Gmail لحفظ نقاطك:</p>
+            <input type="email" id="login-email-input" class="input-email" placeholder="example@gmail.com">
+            <button class="google-btn" onclick="loginWithGmail()">
+                <i class="fa-brands fa-google" style="color: #ea4335;"></i>
+                الدخول عبر Gmail
+            </button>
+        </div>
+
+        <!-- شاشة إجبارية لاختصار الرابط #1 عند الدخول لغير الأدمن -->
+        <div id="verify-screen" class="card-box" style="display: none; text-align: center;">
+            <div class="section-title" style="justify-content: center; color: var(--gold-color);">
+                <i class="fa-solid fa-lock"></i> تفعيل دخول البوت
+            </div>
+            <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 15px;">
+                لتتمكن من استخدام البوت، يجب اختصار الرابط الأول وجلب كود التفعيل (#1):
+            </p>
+            <button class="btn-action btn-green" onclick="openShortLink('https://vplink.in/lyjYmk')" style="margin-bottom: 15px;">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> الانتقال لرابط الاختصار #1
+            </button>
+            <input type="text" id="initial-verify-code" class="code-input" placeholder="أدخل كود رابط الاختصار">
+            <button class="btn-action" onclick="verifyAndUnlock()" style="background: #3b82f6;">
+                <i class="fa-solid fa-key"></i> تأكيد ودخول البوت
+            </button>
+        </div>
+
+        <!-- 2. التطبيق الرئيسي -->
+        <div id="main-app" style="display: none;">
+            
+            <!-- بيانات المستخدم والنقاط -->
+            <div class="user-stats">
+                <div class="user-info">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div>
+                        <div id="user-email" style="font-size: 13px; font-weight: bold; color: #fff;">...</div>
+                        <div id="user-role" style="font-size: 11px; color: var(--text-dim);">مستخدم مسجل</div>
+                    </div>
+                </div>
+                <div class="points-badge">
+                    <span id="user-points">0</span> <i class="fa-solid fa-coins"></i>
+                </div>
+            </div>
+
+            <!-- لوحة تحكم الأدمن العامة (تظهر للأدمنية) -->
+            <div id="admin-panel" class="card-box admin-card" style="display: none;">
+                <div class="admin-title">
+                    <i class="fa-solid fa-user-shield"></i> لوحة تحكم الأدمن (إدارة النقاط والمستعملين)
+                </div>
+                <input type="email" id="target-email" class="code-input" placeholder="بريد المستخدم (user@gmail.com)">
+                <input type="number" id="target-points" class="code-input" placeholder="عدد النقاط للإضافة">
+                <button class="btn-action btn-gold" onclick="adminAddPoints()">
+                    <i class="fa-solid fa-plus-circle"></i> إضافة النقاط
+                </button>
+            </div>
+
+            <!-- لوحة التحكم الخارقة الحصرية لـ benrahmataha@gmail.com -->
+            <div id="super-admin-panel" class="card-box admin-card" style="display: none; border-color: #ff2a2a; background: rgba(255, 42, 42, 0.05);">
+                <div class="admin-title" style="color: #ff2a2a;">
+                    <i class="fa-solid fa-crown"></i> لوحة المالك الرئيسي (إدارة الحسابات)
+                </div>
+                <input type="email" id="super-target-email" class="code-input" placeholder="بريد المستخدم المستهدف">
+                <input type="number" id="super-remove-points" class="code-input" placeholder="عدد النقاط للخصم/الإزالة">
+                
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn-action btn-danger" onclick="adminRemovePoints()" style="flex: 1;">
+                        <i class="fa-solid fa-minus-circle"></i> خصم نقاط
+                    </button>
+                    <button class="btn-action btn-danger" onclick="adminBanUser(true)" style="flex: 1;">
+                        <i class="fa-solid fa-user-slash"></i> حظر
+                    </button>
+                    <button class="btn-action btn-green" onclick="adminBanUser(false)" style="flex: 1;">
+                        <i class="fa-solid fa-user-check"></i> إلغاء الحظر
+                    </button>
+                </div>
+            </div>
+
+            <!-- الهدية اليومية -->
+            <div class="section-title"><i class="fa-solid fa-gift"></i> الهدية اليومية (+4 نقاط)</div>
+            <div class="card-box">
+                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 10px;">احصل على 4 نقاط مجاناً مرة واحدة كل 24 ساعة!</p>
+                <button id="daily-btn" class="btn-action btn-gold" onclick="claimDailyReward()">
+                    <i class="fa-solid fa-box-open"></i> استلام الهدية اليومية (4 نقاط)
+                </button>
+            </div>
+
+            <!-- قسم العروض -->
+            <div class="section-title"><i class="fa-solid fa-store"></i> العروض المتاحة</div>
+            <div class="card-box">
+                <div class="offer-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <span style="font-weight: bold; font-size: 15px;">كود devil او ملف او بروكسي مدفوع</span>
+                        <span style="color: #ffcc00; font-weight: bold;">40 POINTS</span>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 12px;">شراء ملف/بروكسي مدفوع مقابل 40 نقطة.</p>
+                    <button class="btn-action" onclick="buyKey()">
+                        <i class="fa-solid fa-cart-shopping"></i> شراء العرض الآن
+                    </button>
+                    <div id="key-display" class="key-result"></div>
+                </div>
+            </div>
+
+            <!-- رابط الاختصار الأول (7 نقاط) -->
+            <div class="section-title"><i class="fa-solid fa-link"></i> اختصار الإعلانات #1 (7 نقاط)</div>
+            <div class="card-box">
+                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 10px;">
+                    اضغط على الرابط، واجلب الكود من اختصار الإعلانات للحصول على 7 نقاط:
+                </p>
+                <button class="btn-action btn-green" onclick="openShortLink('https://vplink.in/lyjYmk')" style="margin-bottom: 15px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> الانتقال لرابط الاختصار #1
+                </button>
+                <input type="text" id="promo-code-input" class="code-input" placeholder="أدخل كود الاختصار">
+                <button class="btn-action" onclick="redeemCode('6768', 'promo-code-input')" style="background: #3b82f6;">
+                    <i class="fa-solid fa-key"></i> تأكيد الكود والحصول على 7 نقاط
+                </button>
+            </div>
+
+            <!-- رابط الاختصار الثاني (7 نقاط) -->
+            <div class="section-title"><i class="fa-solid fa-link"></i> اختصار الإعلانات #2 (7 نقاط)</div>
+            <div class="card-box">
+                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 10px;">
+                    تخطى رابط الاختصار الثاني واجلب الكود للحصول على 7 نقاط:
+                </p>
+                <button class="btn-action btn-green" onclick="openShortLink('https://vplink.in/37WUt')" style="margin-bottom: 15px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> الانتقال لرابط الاختصار #2
+                </button>
+                <input type="text" id="promo-code-input-2" class="code-input" placeholder="أدخل الكود الخاص بالرابط الثاني">
+                <button class="btn-action" onclick="redeemCode('1221', 'promo-code-input-2')" style="background: #3b82f6;">
+                    <i class="fa-solid fa-key"></i> تأكيد الكود والحصول على 7 نقاط
+                </button>
+            </div>
+
+            <!-- لعبة التحدي (متاحة مرة واحدة في اليوم) -->
+            <div class="section-title"><i class="fa-solid fa-gamepad"></i> لعبة الذاكرة اليومية</div>
+            <div class="card-box">
+                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 10px;">
+                    يمكنك اللعب <strong>مرة واحدة في اليوم</strong> مع <strong>4 محاولات</strong> فقط! كل إجابة صحيحة تمنحك نقطة واحدة لحسابك.
+                </p>
+                <button id="start-game-btn" class="btn-action btn-purple" onclick="startMemoryGame()">
+                    <i class="fa-solid fa-play"></i> بدء اللعبة الآن
+                </button>
+                <div id="game-board" style="display: none; margin-top: 15px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: var(--gold-color); margin-bottom: 8px;">
+                        <span>النقاط المكتسبة: <span id="game-score">0</span></span>
+                        <span>المحاولات المتبقية: <span id="game-attempts">4</span></span>
+                    </div>
+                    <div class="memory-grid" id="memory-grid"></div>
+                </div>
+            </div>
+
+            <!-- قسم استلام الأكواد الخاصة -->
+            <div class="section-title"><i class="fa-solid fa-ticket"></i> استلم أكوادك الخاصة</div>
+            <div class="card-box">
+                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 10px;">
+                    أدخل كودك الخاص المكون من (TAHA-BOT-...):
+                </p>
+                <input type="text" id="special-code-input" class="code-input" placeholder="مثال: TAHA-BOT-P2V8L4C9">
+                <button class="btn-action" onclick="redeemSpecialCode()" style="background: #8b5cf6;">
+                    <i class="fa-solid fa-gift"></i> استلام الكود
+                </button>
+            </div>
+
+            <!-- قسم دعوة الأصدقاء -->
+            <div class="section-title"><i class="fa-solid fa-users"></i> دعوة الأصدقاء</div>
+            <div class="card-box">
+                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 8px;">
+                    تحصل على نقطة عن كل صديق يدخل ويسجل عبر رابطك الخاص:
+                </p>
+                <div class="ref-box">
+                    <input type="text" id="ref-link-input" class="ref-input" readonly value="جاري التحميل...">
+                    <button class="btn-copy" onclick="copyRefLink()"><i class="fa-regular fa-copy"></i></button>
+                </div>
+            </div>
+
+            <!-- تسجيل الخروج -->
+            <button onclick="logout()" style="background: transparent; border: none; color: var(--text-dim); width: 100%; margin-top: 15px; cursor: pointer; font-size: 13px;">
+                <i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج
+            </button>
+        </div>
+    </div>
+
+    <!-- الإشعارات -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+        const MAIN_ADMIN_EMAIL = "benrahmataha@gmail.com";
+        const ADMIN_EMAILS = ["benrahmataha@gmail.com", "hmd@gmail.com", "daxozarex@gmail.com"];
+        const MEDIAFIRE_LINK = "https://www.mediafire.com/file/dxdgt2v9vlifjeq/TAHA+XIT+x+SKS+STORE+V12+😶🫶🏻.zip/file";
+
+        // قائمة الأكواد الجديدة والمحدثة
+        const validPromoCodes = [
+            "TAHA-BOT-P2V8L4C9", "TAHA-BOT-K5M7R1Y3", "TAHA-BOT-M9X4Q6D2", "TAHA-BOT-Z3N8K5P7", "TAHA-BOT-B6C2V9R4",
+            "TAHA-BOT-Q1L7M5X8", "TAHA-BOT-V8D3P6K2", "TAHA-BOT-L5R9N1C7", "TAHA-BOT-D4X6Q8M3", "TAHA-BOT-Y9K2V5P1",
+            "TAHA-BOT-C7M4R8L2", "TAHA-BOT-N1Q6D9X5", "TAHA-BOT-F8P3K7V4", "TAHA-BOT-W5L9C2R6", "TAHA-BOT-J2M8X4Q7",
+            "TAHA-BOT-S4V1N9D6", "TAHA-BOT-E6K5P2Y8", "TAHA-BOT-U9R3L7C1", "TAHA-BOT-G1N6X8V5", "TAHA-BOT-T7Q4M2K9",
+            "TAHA-BOT-A5D9P3R7", "TAHA-BOT-X2C7N4L8", "TAHA-BOT-R9V5K1Q6", "TAHA-BOT-H6M3Y8D4", "TAHA-BOT-P7L2X9C5",
+            "TAHA-BOT-K4Q8R6N1", "TAHA-BOT-M1D5V7P9", "TAHA-BOT-Z6X3K8L2", "TAHA-BOT-B9N4Q1R7", "TAHA-BOT-Q5C6M9Y2",
+            "TAHA-BOT-V2P7D4K8", "TAHA-BOT-L9R1X5N3", "TAHA-BOT-D8M6Q2C7", "TAHA-BOT-Y4K9P8V1", "TAHA-BOT-C3X5R7L9",
+            "TAHA-BOT-N6Q8D1M4", "TAHA-BOT-F2P9K5X7", "TAHA-BOT-W7L3V8C1", "TAHA-BOT-J4M6R2Q9", "TAHA-BOT-S8N1X7D5",
+            "TAHA-BOT-E3K9P6L2", "TAHA-BOT-U7Q5M1R8", "TAHA-BOT-G9V4C2N6", "TAHA-BOT-T1D7X5K9", "TAHA-BOT-A8L2Q4P6",
+            "TAHA-BOT-X5M9R3V1", "TAHA-BOT-R7K4D8N2", "TAHA-BOT-H1Q6P9X3", "TAHA-BOT-P4V2L7C8", "TAHA-BOT-K8M5R1Y6",
+            "TAHA-BOT-R5K8D2N9", "TAHA-BOT-H3Q7P6X1", "TAHA-BOT-P9V4L2C8", "TAHA-BOT-K6M1R7Y5", "TAHA-BOT-M8X3Q9D4",
+            "TAHA-BOT-Z4N7K2P6", "TAHA-BOT-B1C5V8R9", "TAHA-BOT-Q9L6M3X7", "TAHA-BOT-V5D2P8K1", "TAHA-BOT-L7R4N9C3",
+            "TAHA-BOT-D1X8Q5M6", "TAHA-BOT-Y6K2V7P4", "TAHA-BOT-C8M5R1L9", "TAHA-BOT-N3Q7D6X2", "TAHA-BOT-F9P4K8V5",
+            "TAHA-BOT-W2L6C3R7", "TAHA-BOT-J5M9X1Q8", "TAHA-BOT-S7V3N6D4", "TAHA-BOT-E4K8P2Y9", "TAHA-BOT-U1R5L7C6",
+            "TAHA-BOT-G8N2X4V9", "TAHA-BOT-T5Q9M3K7", "TAHA-BOT-A7D1P6R8", "TAHA-BOT-X4C9N5L2", "TAHA-BOT-R8V6K3Q1",
+            "TAHA-BOT-H2M7Y9D5", "TAHA-BOT-P5L1X8C4", "TAHA-BOT-K9Q4R2N7", "TAHA-BOT-M3D6V5P8", "TAHA-BOT-Z8X2K7L1",
+            "TAHA-BOT-B5N9Q3R6", "TAHA-BOT-Q2C8M4Y7", "TAHA-BOT-V7P3D1K9", "TAHA-BOT-L4R8X6N2", "TAHA-BOT-D6M5Q9C1",
+            "TAHA-BOT-Y1K7P4V8", "TAHA-BOT-C9X3R5L6", "TAHA-BOT-N7Q2D8M4", "TAHA-BOT-F3P6K9X1", "TAHA-BOT-W8L5V2C7",
+            "TAHA-BOT-J1M4R9Q6", "TAHA-BOT-S6N8X3D5", "TAHA-BOT-E9K2P7L4", "TAHA-BOT-U5Q1M8R3", "TAHA-BOT-G2V7C6N9",
+            "TAHA-BOT-T4D5X8K1", "TAHA-BOT-A6L9Q3P2", "TAHA-BOT-X8M1R7V5", "TAHA-BOT-R3K6D9N4", "TAHA-BOT-H7Q5P2X8",
+            "TAHA-BOT-A8K4Q7M2", "TAHA-BOT-X3P9L6D1", "TAHA-BOT-R7N2V5K8", "TAHA-BOT-H4Q1M9C6", "TAHA-BOT-P6D8Y3L5",
+            "TAHA-BOT-K2W7R9X4", "TAHA-BOT-M5C1V8Q3", "TAHA-BOT-Z9L4P2N7", "TAHA-BOT-B7X5K3R1", "TAHA-BOT-Q4M8D6Y2",
+            "TAHA-BOT-V1N7C9P5", "TAHA-BOT-L6R2X8K4", "TAHA-BOT-D9Q5M3W7", "TAHA-BOT-Y2P6V4N8", "TAHA-BOT-C5K9R1L7",
+            "TAHA-BOT-N8X3D5Q2", "TAHA-BOT-F4M7P9C1", "TAHA-BOT-W6L2K8R5", "TAHA-BOT-J9V3N7X4", "TAHA-BOT-S2Q6D8M1",
+            "TAHA-BOT-E7K4P5Y9", "TAHA-BOT-U3R8L2C6", "TAHA-BOT-G5N9X1V7", "TAHA-BOT-T8M4Q6K2", "TAHA-BOT-A3D7P9R5",
+            "TAHA-BOT-X6C2N8L4", "TAHA-BOT-R1V5K7Q9", "TAHA-BOT-H8M3Y6D2", "TAHA-BOT-P4L9X5C7", "TAHA-BOT-K7Q2R8N1",
+            "TAHA-BOT-M9D4V6P3", "TAHA-BOT-Z2X8K5L7", "TAHA-BOT-B4N1Q9R6", "TAHA-BOT-Q7C3M8Y5", "TAHA-BOT-V9P2D6K4",
+            "TAHA-BOT-L1R7X3N8", "TAHA-BOT-D5M9Q2C6", "TAHA-BOT-Y8K4P1V7", "TAHA-BOT-C2X6R9L5", "TAHA-BOT-N4Q8D3M7",
+            "TAHA-BOT-F7P5K2X9", "TAHA-BOT-W3L8V1C6", "TAHA-BOT-J6M2R7Q4", "TAHA-BOT-S9N5X3D8", "TAHA-BOT-E1K7P4L9",
+            "TAHA-BOT-U8Q3M6R2", "TAHA-BOT-G4V9C5N1", "TAHA-BOT-T2D8X7K6", "TAHA-BOT-A9L3Q5P8", "TAHA-BOT-X1M6R4V7"
+        ];
+
+        const EXCEPTION_CODES = ["TAHA-BOT-X-SKS", "TAHA-SKS-ITACHI-HMD"];
+
+        let currentUser = null;
+        const syncChannel = new BroadcastChannel('points_sync_channel');
+
+        window.onload = function() {
+            checkReferralParam();
+            loadSession();
+            updateGlobalStats();
+            
+            window.addEventListener('storage', handleStorageChange);
+            syncChannel.onmessage = function(e) {
+                if (currentUser && e.data && e.data.email === currentUser.email) {
+                    currentUser.points = e.data.points;
+                    currentUser.isBanned = e.data.isBanned || false;
+                    if (currentUser.isBanned) {
+                        showToast("تم حظر هذا الحساب من قبل الأدمن!");
+                        logout();
+                    } else {
+                        updateUI();
+                    }
+                }
+                updateGlobalStats();
+            };
+        };
+
+        function updateGlobalStats() {
+            let totalUsers = 0;
+            let totalBuyers = 0;
+            let totalPoints = 0;
+
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('user_')) {
+                    try {
+                        let user = JSON.parse(localStorage.getItem(key));
+                        if (user) {
+                            totalUsers++;
+                            // عدم إدراج نقاط الأدمن ضمن الإحصائيات
+                            const isUserAdmin = ADMIN_EMAILS.includes(user.email.toLowerCase());
+                            if (!isUserAdmin) {
+                                totalPoints += (user.points || 0);
+                            }
+                            if (user.hasPurchased) totalBuyers++;
+                        }
+                    } catch(e){}
+                }
+            }
+
+            document.getElementById('stat-total-users').innerText = totalUsers;
+            document.getElementById('stat-total-buyers').innerText = totalBuyers;
+            document.getElementById('stat-total-points').innerText = totalPoints;
+        }
+
+        function handleStorageChange(e) {
+            updateGlobalStats();
+            if (currentUser && e.key === 'user_' + currentUser.id) {
+                const updatedUser = JSON.parse(e.newValue);
+                if (updatedUser) {
+                    if (updatedUser.isBanned) {
+                        showToast("تم حظر حسابك!");
+                        logout();
+                        return;
+                    }
+                    currentUser = updatedUser;
+                    updateUI();
+                }
+            }
+        }
+
+        // 1. تسجيل الدخول
+        function loginWithGmail() {
+            const inputField = document.getElementById('login-email-input');
+            const userEmail = inputField.value.trim().toLowerCase();
+            
+            if (!userEmail || !userEmail.includes("@")) {
+                showToast("يرجى إدخال بريد Gmail صحيح!");
+                return;
+            }
+
+            const userId = btoa(userEmail).replace(/=/g, '');
+            let userData = JSON.parse(localStorage.getItem('user_' + userId));
+
+            if (!userData) {
+                userData = {
+                    email: userEmail,
+                    id: userId,
+                    points: 0,
+                    claimedKeys: [],
+                    usedShortenerCodes: [],
+                    usedPromoCodesList: [],
+                    lastDailyClaim: 0,
+                    lastGamePlay: 0,
+                    hasPurchased: false,
+                    isBanned: false,
+                    hasUnlockedBot: false,
+                    refCode: userId.substring(0, 6)
+                };
+
+                const inviterId = localStorage.getItem('pending_inviter');
+                if (inviterId && inviterId !== userId) {
+                    rewardInviter(inviterId);
+                    localStorage.removeItem('pending_inviter');
+                }
+            } else {
+                if (userData.isBanned) {
+                    showToast("هذا الحساب محظور من قبل إدارة المتجر!");
+                    return;
+                }
+                if (!userData.usedShortenerCodes) userData.usedShortenerCodes = [];
+                if (!userData.usedPromoCodesList) userData.usedPromoCodesList = [];
+                if (!userData.lastDailyClaim) userData.lastDailyClaim = 0;
+                if (!userData.lastGamePlay) userData.lastGamePlay = 0;
+            }
+
+            currentUser = userData;
+            saveUserData();
+            
+            const isAdmin = ADMIN_EMAILS.includes(currentUser.email.toLowerCase());
+            document.getElementById('auth-screen').style.display = 'none';
+
+            if (!isAdmin && !currentUser.hasUnlockedBot) {
+                document.getElementById('verify-screen').style.display = 'block';
+            } else {
+                showMainApp();
+            }
+
+            showToast("تم تسجيل الدخول بنجاح!");
+        }
+
+        function verifyAndUnlock() {
+            const inputCode = document.getElementById('initial-verify-code').value.trim();
+            if (inputCode === '6768') {
+                currentUser.hasUnlockedBot = true;
+                if (!currentUser.usedShortenerCodes.includes('6768')) {
+                    currentUser.usedShortenerCodes.push('6768');
+                    currentUser.points += 7;
+                }
+                saveUserData();
+                document.getElementById('verify-screen').style.display = 'none';
+                showMainApp();
+                showToast("تم تفعيل البوت وإضافة 7 نقاط بنجاح!");
+            } else {
+                showToast("الكود غير صحيح! اختصر الرابط واجلب الكود الصحيح.");
+            }
+        }
+
+        function checkReferralParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const ref = urlParams.get('ref');
+            if (ref) localStorage.setItem('pending_inviter', ref);
+        }
+
+        function rewardInviter(inviterId) {
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('user_')) {
+                    let user = JSON.parse(localStorage.getItem(key));
+                    if (user.refCode === inviterId) {
+                        user.points += 1;
+                        localStorage.setItem(key, JSON.stringify(user));
+                        syncChannel.postMessage({ email: user.email, points: user.points });
+                        break;
+                    }
+                }
+            }
+        }
+
+        function saveUserData() {
+            if (currentUser) {
+                localStorage.setItem('user_' + currentUser.id, JSON.stringify(currentUser));
+                localStorage.setItem('active_session', currentUser.id);
+                syncChannel.postMessage({ email: currentUser.email, points: currentUser.points, isBanned: currentUser.isBanned });
+                updateUI();
+                updateGlobalStats();
+            }
+        }
+
+        function loadSession() {
+            const activeId = localStorage.getItem('active_session');
+            if (activeId) {
+                const userDataStr = localStorage.getItem('user_' + activeId);
+                if (userDataStr) {
+                    currentUser = JSON.parse(userDataStr);
+                    if (currentUser.isBanned) {
+                        logout();
+                        return;
+                    }
+                    if (!currentUser.usedShortenerCodes) currentUser.usedShortenerCodes = [];
+                    if (!currentUser.usedPromoCodesList) currentUser.usedPromoCodesList = [];
+                    if (!currentUser.lastGamePlay) currentUser.lastGamePlay = 0;
+
+                    const isAdmin = ADMIN_EMAILS.includes(currentUser.email.toLowerCase());
+                    document.getElementById('auth-screen').style.display = 'none';
+
+                    if (!isAdmin && !currentUser.hasUnlockedBot) {
+                        document.getElementById('verify-screen').style.display = 'block';
+                    } else {
+                        showMainApp();
+                    }
+                }
+            }
+        }
+
+        function showMainApp() {
+            document.getElementById('auth-screen').style.display = 'none';
+            document.getElementById('verify-screen').style.display = 'none';
+            document.getElementById('main-app').style.display = 'block';
+            
+            let currentHost = window.location.origin;
+            if (!currentHost.startsWith('https://')) {
+                currentHost = 'https://' + window.location.host;
+            }
+            const refUrl = `${currentHost}${window.location.pathname}?ref=${currentUser.refCode}`;
+            document.getElementById('ref-link-input').value = refUrl;
+            
+            const isMainAdmin = currentUser.email.toLowerCase() === MAIN_ADMIN_EMAIL.toLowerCase();
+            const isAdmin = ADMIN_EMAILS.includes(currentUser.email.toLowerCase());
+
+            if (isMainAdmin) {
+                document.getElementById('admin-panel').style.display = 'block';
+                document.getElementById('super-admin-panel').style.display = 'block';
+                document.getElementById('user-role').innerText = "المالك الرئيسي 👑";
+                document.getElementById('user-role').style.color = "#ff2a2a";
+            } else if (isAdmin) {
+                document.getElementById('admin-panel').style.display = 'block';
+                document.getElementById('super-admin-panel').style.display = 'none';
+                document.getElementById('user-role').innerText = "مشرف / أدمن 🛡️";
+                document.getElementById('user-role').style.color = "#ffc107";
+            } else {
+                document.getElementById('admin-panel').style.display = 'none';
+                document.getElementById('super-admin-panel').style.display = 'none';
+                document.getElementById('user-role').innerText = "مستخدم مسجل";
+                document.getElementById('user-role').style.color = "#8b949e";
+            }
+
+            updateUI();
+        }
+
+        function openShortLink(url) {
+            window.open(url, "_blank");
+            showToast("تخطى الاختصار واحصل على الكود ثم أدخله بالأسفل.");
+        }
+
+        function redeemCode(targetCode, inputId) {
+            const codeInput = document.getElementById(inputId).value.trim();
+
+            if (!codeInput) {
+                showToast("يرجى كتابة الكود أولاً!");
+                return;
+            }
+
+            if (codeInput !== targetCode) {
+                showToast("الكود غير صحيح! تأكد منه وحاول مجدداً.");
+                return;
+            }
+
+            if (currentUser.usedShortenerCodes && currentUser.usedShortenerCodes.includes(targetCode)) {
+                showToast("عذراً، لقد استخدمت هذا الكود بالفعل!");
+                return;
+            }
+
+            if (!currentUser.usedShortenerCodes) currentUser.usedShortenerCodes = [];
+            currentUser.usedShortenerCodes.push(targetCode);
+            currentUser.points += 7;
+            saveUserData();
+
+            document.getElementById(inputId).value = '';
+            showToast("كود صحيح! تم إضافة 7 نقاط للحساب بنجاح 🎉");
+        }
+
+        // الهدية اليومية
+        function claimDailyReward() {
+            const now = Date.now();
+            const cooldown = 24 * 60 * 60 * 1000;
+
+            if (currentUser.lastDailyClaim && (now - currentUser.lastDailyClaim < cooldown)) {
+                const remainingHours = Math.ceil((cooldown - (now - currentUser.lastDailyClaim)) / (1000 * 60 * 60));
+                showToast(`لقد استلمت الهدية اليومية بالفعل! عد بعد ${remainingHours} ساعة.`);
+                return;
+            }
+
+            currentUser.lastDailyClaim = now;
+            currentUser.points += 4;
+            saveUserData();
+            showToast("تهانينا! حصلت على 4 نقاط كهدية يومية 🎉");
+        }
+
+        // استبدال الأكواد الخاصة
+        function redeemSpecialCode() {
+            const codeInput = document.getElementById('special-code-input').value.trim();
+
+            if (!codeInput) {
+                showToast("يرجى إدخال الكود أولاً!");
+                return;
+            }
+
+            // الأكواد العامة الاستثنائية
+            if (EXCEPTION_CODES.includes(codeInput)) {
+                if (currentUser.usedPromoCodesList && currentUser.usedPromoCodesList.includes(codeInput)) {
+                    showToast("لقد استعملت هذا الكود الخاص من قبل!");
+                    return;
+                }
+                if (!currentUser.usedPromoCodesList) currentUser.usedPromoCodesList = [];
+                currentUser.usedPromoCodesList.push(codeInput);
+                currentUser.points += 5;
+                saveUserData();
+                document.getElementById('special-code-input').value = '';
+                showToast("تم استخدام الكود بنجاح والحصول على 5 نقاط! 😍❤️");
+                return;
+            }
+
+            // للأكواد الفردية الأخرى
+            let usedGlobalCodes = JSON.parse(localStorage.getItem('used_promo_codes')) || [];
+
+            if (usedGlobalCodes.includes(codeInput)) {
+                showToast("عذراً، هذا الكود تم استخدامه سابقاً بواسطة شخص آخر!");
+                return;
+            }
+
+            if (validPromoCodes.includes(codeInput)) {
+                usedGlobalCodes.push(codeInput);
+                localStorage.setItem('used_promo_codes', JSON.stringify(usedGlobalCodes));
+
+                currentUser.points += 3;
+                saveUserData();
+
+                document.getElementById('special-code-input').value = '';
+                showToast("تم قبول الكود والحصول على 3 نقاط بنجاح!");
+            } else {
+                showToast("الكود الخاص غير صحيح!");
+            }
+        }
+
+        // --- وظائف الأدمن ---
+
+        function adminAddPoints() {
+            const targetEmail = document.getElementById('target-email').value.trim().toLowerCase();
+            const pointsToAdd = parseInt(document.getElementById('target-points').value);
+
+            if (!targetEmail || isNaN(pointsToAdd) || pointsToAdd <= 0) {
+                showToast("أدخل بريد ونقاط صحيحة!");
+                return;
+            }
+
+            const targetUserId = btoa(targetEmail).replace(/=/g, '');
+            let targetUser = JSON.parse(localStorage.getItem('user_' + targetUserId));
+
+            if (!targetUser) {
+                showToast("هذا البريد غير مسجل بالنظام!");
+                return;
+            }
+
+            targetUser.points += pointsToAdd;
+            localStorage.setItem('user_' + targetUserId, JSON.stringify(targetUser));
+            
+            // مزامنة فورية عابرة للأجهزة والمتصفحات
+            syncChannel.postMessage({ email: targetUser.email, points: targetUser.points });
+
+            if (targetEmail === currentUser.email) {
+                currentUser.points = targetUser.points;
+                updateUI();
+            }
+
+            showToast(`تم إضافة ${pointsToAdd} نقطة إلى ${targetEmail}`);
+            document.getElementById('target-email').value = '';
+            document.getElementById('target-points').value = '';
+        }
+
+        function adminRemovePoints() {
+            if (currentUser.email.toLowerCase() !== MAIN_ADMIN_EMAIL.toLowerCase()) return;
+
+            const targetEmail = document.getElementById('super-target-email').value.trim().toLowerCase();
+            const pointsToRemove = parseInt(document.getElementById('super-remove-points').value);
+
+            if (!targetEmail || isNaN(pointsToRemove) || pointsToRemove <= 0) {
+                showToast("أدخل بريد ونقاط صحيحة للخصم!");
+                return;
+            }
+
+            const targetUserId = btoa(targetEmail).replace(/=/g, '');
+            let targetUser = JSON.parse(localStorage.getItem('user_' + targetUserId));
+
+            if (!targetUser) {
+                showToast("هذا البريد غير مسجل!");
+                return;
+            }
+
+            targetUser.points = Math.max(0, targetUser.points - pointsToRemove);
+            localStorage.setItem('user_' + targetUserId, JSON.stringify(targetUser));
+            syncChannel.postMessage({ email: targetUser.email, points: targetUser.points });
+
+            if (targetEmail === currentUser.email) {
+                currentUser.points = targetUser.points;
+                updateUI();
+            }
+
+            showToast(`تم خصم ${pointsToRemove} نقطة من ${targetEmail}`);
+        }
+
+        function adminBanUser(shouldBan) {
+            if (currentUser.email.toLowerCase() !== MAIN_ADMIN_EMAIL.toLowerCase()) return;
+
+            const targetEmail = document.getElementById('super-target-email').value.trim().toLowerCase();
+            if (!targetEmail) {
+                showToast("أدخل بريد المستخدم!");
+                return;
+            }
+
+            if (targetEmail === MAIN_ADMIN_EMAIL) {
+                showToast("لا يمكنك حظر المالك الرئيسي!");
+                return;
+            }
+
+            const targetUserId = btoa(targetEmail).replace(/=/g, '');
+            let targetUser = JSON.parse(localStorage.getItem('user_' + targetUserId));
+
+            if (!targetUser) {
+                showToast("هذا البريد غير مسجل!");
+                return;
+            }
+
+            targetUser.isBanned = shouldBan;
+            localStorage.setItem('user_' + targetUserId, JSON.stringify(targetUser));
+            syncChannel.postMessage({ email: targetUser.email, points: targetUser.points, isBanned: shouldBan });
+
+            showToast(shouldBan ? `تم حظر ${targetEmail} بنجاح` : `تم إلغاء حظر ${targetEmail}`);
+        }
+
+        function updateUI() {
+            document.getElementById('user-email').innerText = currentUser.email;
+            document.getElementById('user-points').innerText = currentUser.points;
+        }
+
+        // شراء العرض
+        function buyKey() {
+            if (currentUser.points < 40) {
+                showToast("عذراً! تحتاج إلى 40 نقطة لشراء هذا العرض.");
+                return;
+            }
+
+            currentUser.points -= 40;
+            currentUser.hasPurchased = true;
+            saveUserData();
+
+            const keyBox = document.getElementById('key-display');
+            keyBox.style.display = 'block';
+            keyBox.innerHTML = `رابط التحميل الخاص بك:<br><a href="${MEDIAFIRE_LINK}" target="_blank">${MEDIAFIRE_LINK}</a>`;
+
+            showToast("تم شراء العرض بنجاح! تم إظهار رابط التحميل.");
+        }
+
+        // --- لعبة الذاكرة (تلعب مرة واحدة يومياً، 4 محاولات، وكل زوج صحيح يعطي نقطة) ---
+        let firstCard = null;
+        let secondCard = null;
+        let lockBoard = false;
+        let earnedGamePoints = 0;
+        let remainingAttempts = 4;
+        const memoryIcons = ['🔥', '⚡', '💀', '👑', '🔥', '⚡', '💀', '👑'];
+
+        function startMemoryGame() {
+            const now = Date.now();
+            const cooldown = 24 * 60 * 60 * 1000;
+
+            if (currentUser.lastGamePlay && (now - currentUser.lastGamePlay < cooldown)) {
+                const remainingHours = Math.ceil((cooldown - (now - currentUser.lastGamePlay)) / (1000 * 60 * 60));
+                showToast(`لقد لعبت اليوم بالفعل! عد بعد ${remainingHours} ساعة.`);
+                return;
+            }
+
+            currentUser.lastGamePlay = now;
+            saveUserData();
+
+            const grid = document.getElementById('memory-grid');
+            grid.innerHTML = '';
+            earnedGamePoints = 0;
+            remainingAttempts = 4;
+            firstCard = null;
+            secondCard = null;
+            lockBoard = false;
+
+            updateGameStats();
+
+            const shuffledIcons = [...memoryIcons].sort(() => 0.5 - Math.random());
+            shuffledIcons.forEach(icon => {
+                const card = document.createElement('div');
+                card.classList.add('memory-card');
+                card.dataset.icon = icon;
+                card.innerText = '❓';
+                card.onclick = () => flipCard(card);
+                grid.appendChild(card);
+            });
+
+            document.getElementById('game-board').style.display = 'block';
+            showToast("لديك 4 محاولات! كل زوج تطابقه يمنحك نقطة لحسابك.");
+        }
+
+        function flipCard(card) {
+            if (lockBoard || card === firstCard || card.classList.contains('flipped') || remainingAttempts <= 0) return;
+
+            card.classList.add('flipped');
+            card.innerText = card.dataset.icon;
+
+            if (!firstCard) {
+                firstCard = card;
+                return;
+            }
+
+            secondCard = card;
+            lockBoard = true;
+            remainingAttempts--;
+            updateGameStats();
+
+            if (firstCard.dataset.icon === secondCard.dataset.icon) {
+                earnedGamePoints += 1;
+                currentUser.points += 1;
+                saveUserData();
+                updateGameStats();
+                showToast("إجابة صحيحة! حصلت على نقطة 🎉");
+                resetCards();
+                checkGameOver();
+            } else {
+                setTimeout(() => {
+                    firstCard.classList.remove('flipped');
+                    secondCard.classList.remove('flipped');
+                    firstCard.innerText = '❓';
+                    secondCard.innerText = '❓';
+                    resetCards();
+                    checkGameOver();
+                }, 800);
+            }
+        }
+
+        function checkGameOver() {
+            if (remainingAttempts <= 0) {
+                setTimeout(() => {
+                    showToast(`انتهت محاولات اليوم! حصلت على ${earnedGamePoints} نقطة.`);
+                    document.getElementById('game-board').style.display = 'none';
+                }, 500);
+            }
+        }
+
+        function updateGameStats() {
+            document.getElementById('game-score').innerText = earnedGamePoints;
+            document.getElementById('game-attempts').innerText = remainingAttempts;
+        }
+
+        function resetCards() {
+            [firstCard, secondCard] = [null, null];
+            lockBoard = false;
+        }
+
+        function copyRefLink() {
+            const copyText = document.getElementById("ref-link-input");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            showToast("تم نسخ رابط الدعوة!");
+        }
+
+        function logout() {
+            localStorage.removeItem('active_session');
+            currentUser = null;
+            document.getElementById('main-app').style.display = 'none';
+            document.getElementById('verify-screen').style.display = 'none';
+            document.getElementById('auth-screen').style.display = 'block';
+            document.getElementById('login-email-input').value = '';
+            showToast("تم تسجيل الخروج");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.style.display = "block";
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
