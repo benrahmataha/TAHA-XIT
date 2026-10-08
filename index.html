@@ -1,1153 +1,130 @@
+
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAHA XIT VIP STORE - متجر المفاتيح والنقاط</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --bg-color: #0d0f12;
-            --card-bg: #161b22;
-            --accent-color: #ff2a2a;
-            --accent-hover: #d61e1e;
-            --text-color: #f0f6fc;
-            --text-dim: #8b949e;
-            --border-color: #30363d;
-            --green-color: #2ea043;
-            --gold-color: #ffc107;
-            --purple-color: #8b5cf6;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 10px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 480px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-        }
-
-        .header h1 {
-            color: var(--accent-color);
-            font-size: 26px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* إحصائيات عامة */
-        .global-stats {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px dashed var(--border-color);
-            padding: 12px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            font-size: 13px;
-            color: var(--text-dim);
-        }
-
-        .global-stats div {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .global-stats span {
-            color: var(--gold-color);
-            font-weight: bold;
-        }
-
-        /* شاشة تسجيل الدخول */
-        #auth-screen {
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .input-email, .code-input {
-            width: 100%;
-            background: #0d1117;
-            border: 1px solid var(--border-color);
-            color: #fff;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 14px;
-            margin-bottom: 10px;
-            text-align: center;
-            outline: none;
-        }
-
-        .input-email:focus, .code-input:focus {
-            border-color: var(--accent-color);
-        }
-
-        .google-btn {
-            background: #ffffff;
-            color: #000000;
-            border: none;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .google-btn:hover {
-            background: #e6e6e6;
-        }
-
-        /* لوحة التحكم الرئيسية */
-        .user-stats {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            border-radius: 14px;
-            margin-bottom: 20px;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-info i {
-            font-size: 24px;
-            color: var(--accent-color);
-        }
-
-        .points-badge {
-            background: rgba(255, 42, 42, 0.15);
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .section-title {
-            font-size: 16px;
-            color: var(--text-dim);
-            margin: 20px 0 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .card-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 15px;
-        }
-
-        /* لوحة الأدمن الخاصة */
-        .admin-card {
-            border: 1px solid var(--gold-color);
-            background: rgba(255, 193, 7, 0.05);
-        }
-
-        .admin-title {
-            color: var(--gold-color);
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-action {
-            width: 100%;
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 5px;
-        }
-
-        .btn-action:hover {
-            background: var(--accent-hover);
-        }
-
-        .btn-green { background: var(--green-color); }
-        .btn-green:hover { background: #238636; }
-
-        .btn-gold { background: var(--gold-color); color: #000; }
-        .btn-gold:hover { background: #e0a800; }
-
-        .btn-purple { background: var(--purple-color); color: #fff; }
-        .btn-purple:hover { background: #7c3aed; }
-
-        .btn-danger { background: #dc2626; color: #fff; }
-        .btn-danger:hover { background: #b91c1c; }
-
-        .key-result {
-            margin-top: 10px;
-            background: #0d1117;
-            border: 1px dashed var(--green-color);
-            color: #2ea043;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 13px;
-            font-weight: bold;
-            display: none;
-            word-break: break-all;
-        }
-
-        .key-result a { color: #4da6ff; text-decoration: underline; }
-
-        .ref-box { display: flex; gap: 8px; margin-top: 10px; }
-
-        .ref-input {
-            width: 100%;
-            background: #0d1117;
-            border: 1px solid var(--border-color);
-            color: #fff;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 12px;
-        }
-
-        .btn-copy {
-            background: var(--border-color);
-            color: white;
-            border: none;
-            padding: 0 15px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        /* شبكة لعبة الذاكرة */
-        .memory-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .memory-card {
-            aspect-ratio: 1;
-            background: #0d1117;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            cursor: pointer;
-            user-select: none;
-            transition: transform 0.3s;
-        }
-
-        .memory-card.flipped {
-            background: #21262d;
-            border-color: var(--accent-color);
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            display: none;
-            z-index: 1000;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KURAMA KEY</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;display:flex;
+  align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at top,#260609,#080808 65%);
+  color:white;font-family:Arial,sans-serif;
+  padding:20px
+}
+.card{
+  width:100%;max-width:430px;text-align:center;
+  background:#0c0c0f;border:1px solid #6e1018;
+  border-radius:18px;padding:30px 22px;
+  box-shadow:0 0 30px #ff001522
+}
+h1{font-size:30px;letter-spacing:3px;margin:8px 0}
+h1 span{color:#ff2038}
+.subtitle{color:#999;font-size:11px;letter-spacing:3px;margin-bottom:35px}
+button{
+  width:100%;padding:17px 10px;border:1px solid #ff5262;
+  border-radius:10px;background:linear-gradient(135deg,#b90017,#ff233a);
+  color:white;font-size:17px;font-weight:bold;letter-spacing:1px;
+  cursor:pointer;box-shadow:0 0 18px #ff001533
+}
+button:disabled{opacity:.6}
+.progress-info{display:flex;justify-content:space-between;
+  color:#aaa;font-size:12px;margin:25px 0 8px}
+.track{height:12px;background:#222;border-radius:20px;overflow:hidden;
+  border:1px solid #512027}
+.bar{height:100%;width:0;background:#ff2038;
+  box-shadow:0 0 12px #ff2038;transition:width .08s linear}
+.result{display:none;margin-top:28px;padding:18px 10px;
+  border:1px solid #6e1018;border-radius:12px;background:#12090b}
+.result p{font-size:11px;color:#aaa;letter-spacing:2px}
+.key{font-size:21px;font-weight:bold;color:#ff4053;
+  overflow-wrap:anywhere;margin:18px 0}
+.copy{background:#171719;border-color:#444;font-size:14px}
+.status{font-size:12px;color:#888;margin-top:22px}
+</style>
 </head>
 <body>
-
-    <div class="container">
-        <!-- الهيدر -->
-        <div class="header">
-            <h1><i class="fa-solid fa-skull"></i> TAHA XIT VIP STORE</h1>
-        </div>
-
-        <!-- الإحصائيات العامة فوق -->
-        <div class="global-stats">
-            <div>عدد المستخدمين : <span id="stat-total-users">0</span></div>
-            <div>عدد المشتريين : <span id="stat-total-buyers">0</span></div>
-            <div>عدد النقاط الاجمالي لدى المستخدمين : <span id="stat-total-points">0</span></div>
-        </div>
-
-        <!-- 1. شاشة تسجيل الدخول -->
-        <div id="auth-screen">
-            <p style="margin-bottom: 15px; color: var(--text-dim);">تسجيل الدخول باستخدام Gmail لحفظ نقاطك:</p>
-            <input type="email" id="login-email-input" class="input-email" placeholder="example@gmail.com">
-            <button class="google-btn" onclick="loginWithGmail()">
-                <i class="fa-brands fa-google" style="color: #ea4335;"></i>
-                الدخول عبر Gmail
-            </button>
-        </div>
-
-        <!-- شاشة إجبارية لاختصار الرابط #1 عند الدخول لغير الأدمن -->
-        <div id="verify-screen" class="card-box" style="display: none; text-align: center;">
-            <div class="section-title" style="justify-content: center; color: var(--gold-color);">
-                <i class="fa-solid fa-lock"></i> تفعيل دخول البوت
-            </div>
-            <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 15px;">
-                لتتمكن من استخدام البوت، يجب اختصار الرابط الأول وجلب كود التفعيل (#1):
-            </p>
-            <button class="btn-action btn-green" onclick="openShortLink('https://vplink.in/lyjYmk')" style="margin-bottom: 15px;">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> الانتقال لرابط الاختصار #1
-            </button>
-            <input type="text" id="initial-verify-code" class="code-input" placeholder="أدخل كود رابط الاختصار">
-            <button class="btn-action" onclick="verifyAndUnlock()" style="background: #3b82f6;">
-                <i class="fa-solid fa-key"></i> تأكيد ودخول البوت
-            </button>
-        </div>
-
-        <!-- 2. التطبيق الرئيسي -->
-        <div id="main-app" style="display: none;">
-            
-            <!-- بيانات المستخدم والنقاط -->
-            <div class="user-stats">
-                <div class="user-info">
-                    <i class="fa-solid fa-circle-user"></i>
-                    <div>
-                        <div id="user-email" style="font-size: 13px; font-weight: bold; color: #fff;">...</div>
-                        <div id="user-role" style="font-size: 11px; color: var(--text-dim);">مستخدم مسجل</div>
-                    </div>
-                </div>
-                <div class="points-badge">
-                    <span id="user-points">0</span> <i class="fa-solid fa-coins"></i>
-                </div>
-            </div>
-
-            <!-- لوحة تحكم الأدمن العامة (تظهر للأدمنية) -->
-            <div id="admin-panel" class="card-box admin-card" style="display: none;">
-                <div class="admin-title">
-                    <i class="fa-solid fa-user-shield"></i> لوحة تحكم الأدمن (إدارة النقاط والمستعملين)
-                </div>
-                <input type="email" id="target-email" class="code-input" placeholder="بريد المستخدم (user@gmail.com)">
-                <input type="number" id="target-points" class="code-input" placeholder="عدد النقاط للإضافة">
-                <button class="btn-action btn-gold" onclick="adminAddPoints()">
-                    <i class="fa-solid fa-plus-circle"></i> إضافة النقاط
-                </button>
-            </div>
-
-            <!-- لوحة التحكم الخارقة الحصرية لـ benrahmataha@gmail.com -->
-            <div id="super-admin-panel" class="card-box admin-card" style="display: none; border-color: #ff2a2a; background: rgba(255, 42, 42, 0.05);">
-                <div class="admin-title" style="color: #ff2a2a;">
-                    <i class="fa-solid fa-crown"></i> لوحة المالك الرئيسي (إدارة الحسابات)
-                </div>
-                <input type="email" id="super-target-email" class="code-input" placeholder="بريد المستخدم المستهدف">
-                <input type="number" id="super-remove-points" class="code-input" placeholder="عدد النقاط للخصم/الإزالة">
-                
-                <div style="display: flex; gap: 8px;">
-                    <button class="btn-action btn-danger" onclick="adminRemovePoints()" style="flex: 1;">
-                        <i class="fa-solid fa-minus-circle"></i> خصم نقاط
-                    </button>
-                    <button class="btn-action btn-danger" onclick="adminBanUser(true)" style="flex: 1;">
-                        <i class="fa-solid fa-user-slash"></i> حظر
-                    </button>
-                    <button class="btn-action btn-green" onclick="adminBanUser(false)" style="flex: 1;">
-                        <i class="fa-solid fa-user-check"></i> إلغاء الحظر
-                    </button>
-                </div>
-            </div>
-
-            <!-- الهدية اليومية -->
-            <div class="section-title"><i class="fa-solid fa-gift"></i> الهدية اليومية (+4 نقاط)</div>
-            <div class="card-box">
-                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 10px;">احصل على 4 نقاط مجاناً مرة واحدة كل 24 ساعة!</p>
-                <button id="daily-btn" class="btn-action btn-gold" onclick="claimDailyReward()">
-                    <i class="fa-solid fa-box-open"></i> استلام الهدية اليومية (4 نقاط)
-                </button>
-            </div>
-
-            <!-- قسم العروض -->
-            <div class="section-title"><i class="fa-solid fa-store"></i> العروض المتاحة</div>
-            
-            <!-- العرض الأول -->
-            <div class="card-box">
-                <div class="offer-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-weight: bold; font-size: 15px;">HOLOGRAM AND WALLGLO VIP</span>
-                        <span style="color: #ffcc00; font-weight: bold;">40 POINTS</span>
-                    </div>
-                    <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 12px;">شراء عرض HOLOGRAM AND WALLGLO VIP مقابل 40 نقطة.</p>
-                    <button class="btn-action" onclick="buyOffer1()">
-                        <i class="fa-solid fa-cart-shopping"></i> شراء العرض الآن
-                    </button>
-                    <div id="key-display-1" class="key-result"></div>
-                </div>
-            </div>
-
-            <!-- العرض الثاني -->
-            <div class="card-box">
-                <div class="offer-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-weight: bold; font-size: 15px;">KEY BALA MOD VIP</span>
-                        <span style="color: #ffcc00; font-weight: bold;">40 POINTS</span>
-                    </div>
-                    <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 12px;">شراء عرض KEY BALA MOD VIP مقابل 40 نقطة.</p>
-                    <button class="btn-action" onclick="buyOffer2()">
-                        <i class="fa-solid fa-cart-shopping"></i> شراء العرض الآن
-                    </button>
-                    <div id="key-display-2" class="key-result"></div>
-                </div>
-            </div>
-
-            <!-- رابط الاختصار الأول (7 نقاط) -->
-            <div class="section-title"><i class="fa-solid fa-link"></i> اختصار الإعلانات #1 (7 نقاط)</div>
-            <div class="card-box">
-                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 10px;">
-                    اضغط على الرابط، واجلب الكود من اختصار الإعلانات للحصول على 7 نقاط:
-                </p>
-                <button class="btn-action btn-green" onclick="openShortLink('https://vplink.in/lyjYmk')" style="margin-bottom: 15px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> الانتقال لرابط الاختصار #1
-                </button>
-                <input type="text" id="promo-code-input" class="code-input" placeholder="أدخل كود الاختصار">
-                <button class="btn-action" onclick="redeemCode('6768', 'promo-code-input')" style="background: #3b82f6;">
-                    <i class="fa-solid fa-key"></i> تأكيد الكود والحصول على 7 نقاط
-                </button>
-            </div>
-
-            <!-- رابط الاختصار الثاني (7 نقاط) -->
-            <div class="section-title"><i class="fa-solid fa-link"></i> اختصار الإعلانات #2 (7 نقاط)</div>
-            <div class="card-box">
-                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 10px;">
-                    تخطى رابط الاختصار الثاني واجلب الكود للحصول على 7 نقاط:
-                </p>
-                <button class="btn-action btn-green" onclick="openShortLink('https://vplink.in/37WUt')" style="margin-bottom: 15px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i> الانتقال لرابط الاختصار #2
-                </button>
-                <input type="text" id="promo-code-input-2" class="code-input" placeholder="أدخل الكود الخاص بالرابط الثاني">
-                <button class="btn-action" onclick="redeemCode('1221', 'promo-code-input-2')" style="background: #3b82f6;">
-                    <i class="fa-solid fa-key"></i> تأكيد الكود والحصول على 7 نقاط
-                </button>
-            </div>
-
-            <!-- لعبة التحدي -->
-            <div class="section-title"><i class="fa-solid fa-gamepad"></i> لعبة الذاكرة اليومية</div>
-            <div class="card-box">
-                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 10px;">
-                    يمكنك اللعب <strong>مرة واحدة في اليوم</strong> مع <strong>4 محاولات</strong> فقط! كل إجابة صحيحة تمنحك نقطة واحدة لحسابك.
-                </p>
-                <button id="start-game-btn" class="btn-action btn-purple" onclick="startMemoryGame()">
-                    <i class="fa-solid fa-play"></i> بدء اللعبة الآن
-                </button>
-                <div id="game-board" style="display: none; margin-top: 15px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; color: var(--gold-color); margin-bottom: 8px;">
-                        <span>النقاط المكتسبة: <span id="game-score">0</span></span>
-                        <span>المحاولات المتبقية: <span id="game-attempts">4</span></span>
-                    </div>
-                    <div class="memory-grid" id="memory-grid"></div>
-                </div>
-            </div>
-
-            <!-- قسم استلام الأكواد الخاصة -->
-            <div class="section-title"><i class="fa-solid fa-ticket"></i> استلم أكوادك الخاصة</div>
-            <div class="card-box">
-                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 10px;">
-                    أدخل كودك الخاص المكون من (TAHA-BOT-...):
-                </p>
-                <input type="text" id="special-code-input" class="code-input" placeholder="مثال: TAHA-BOT-A7K4M9Q2">
-                <button class="btn-action" onclick="redeemSpecialCode()" style="background: #8b5cf6;">
-                    <i class="fa-solid fa-gift"></i> استلام الكود
-                </button>
-            </div>
-
-            <!-- قسم دعوة الأصدقاء -->
-            <div class="section-title"><i class="fa-solid fa-users"></i> دعوة الأصدقاء</div>
-            <div class="card-box">
-                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 8px;">
-                    تحصل على نقطة عن كل صديق يدخل ويسجل عبر رابطك الخاص:
-                </p>
-                <div class="ref-box">
-                    <input type="text" id="ref-link-input" class="ref-input" readonly value="جاري التحميل...">
-                    <button class="btn-copy" onclick="copyRefLink()"><i class="fa-regular fa-copy"></i></button>
-                </div>
-            </div>
-
-            <!-- تسجيل الخروج -->
-            <button onclick="logout()" style="background: transparent; border: none; color: var(--text-dim); width: 100%; margin-top: 15px; cursor: pointer; font-size: 13px;">
-                <i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج
-            </button>
-        </div>
-    </div>
-
-    <!-- الإشعارات -->
-    <div id="toast" class="toast"></div>
-
-    <script>
-        const MAIN_ADMIN_EMAIL = "benrahmataha@gmail.com";
-        const ADMIN_EMAILS = ["benrahmataha@gmail.com", "hmd@gmail.com", "daxozarex@gmail.com"];
-        const OFFER1_LINK = "https://www.mediafire.com/file/dsxhmoq6m0dzymu/HOLOGRAM+BY+TAHA+VIP.zip/file";
-
-        // قائمة الأكواد الخاصة الجديدة
-        const validPromoCodes = [
-            "TAHA-BOT-A7K4M9Q2", "TAHA-BOT-X5D8P3L6", "TAHA-BOT-R2N7V4K9", "TAHA-BOT-H8Q1M5C3", "TAHA-BOT-P6L9Y2D7",
-            "TAHA-BOT-K3W8R5X1", "TAHA-BOT-M9C4V7Q2", "TAHA-BOT-Z5L2P8N6", "TAHA-BOT-B4X7K1R9", "TAHA-BOT-Q8M3D6Y5",
-            "TAHA-BOT-V2N9C5P7", "TAHA-BOT-L6R4X8K3", "TAHA-BOT-D7Q2M9W5", "TAHA-BOT-Y3P8V1N6", "TAHA-BOT-C9K5R2L7",
-            "TAHA-BOT-N4X8D6Q1", "TAHA-BOT-F7M2P9C5", "TAHA-BOT-W5L3K8R6", "TAHA-BOT-J9V4N1X7", "TAHA-BOT-S2Q7D5M8",
-            "TAHA-BOT-E6K9P3Y1", "TAHA-BOT-U4R8L5C2", "TAHA-BOT-G1N7X6V9", "TAHA-BOT-T8M5Q2K4", "TAHA-BOT-A3D9P6R1",
-            "TAHA-BOT-X7C2N5L8", "TAHA-BOT-R6V1K9Q3", "TAHA-BOT-H2M8Y4D7", "TAHA-BOT-P5L3X9C1", "TAHA-BOT-K8Q6R2N4",
-            "TAHA-BOT-M4D7V9P2", "TAHA-BOT-Z1X5K8L6", "TAHA-BOT-B9N3Q7R1", "TAHA-BOT-Q2C6M8Y4", "TAHA-BOT-V7P5D1K9",
-            "TAHA-BOT-L3R9X2N6", "TAHA-BOT-D8M4Q5C7", "TAHA-BOT-Y1K6P8V3", "TAHA-BOT-C5X9R4L2", "TAHA-BOT-N7Q3D8M1",
-            "TAHA-BOT-F2P6K5X9", "TAHA-BOT-W8L1V7C4", "TAHA-BOT-J4M9R6Q2", "TAHA-BOT-S6N5X3D8", "TAHA-BOT-E1K7P9L4",
-            "TAHA-BOT-U9Q2M6R5", "TAHA-BOT-G3V8C1N7", "TAHA-BOT-T5D4X9K2", "TAHA-BOT-A8L6Q3P1", "TAHA-BOT-R9K2D7N5",
-            "TAHA-BOT-H4Q8P1X6", "TAHA-BOT-P7V3L9C2", "TAHA-BOT-K5M1R8Y4", "TAHA-BOT-M6X9Q2D3", "TAHA-BOT-Z8N4K7P1",
-            "TAHA-BOT-B2C5V9R6", "TAHA-BOT-Q6L3M8X1", "TAHA-BOT-V9D2P5K7", "TAHA-BOT-L1R6N4C8", "TAHA-BOT-D5X7Q9M2",
-            "TAHA-BOT-Y8K3V6P1", "TAHA-BOT-C4M9R2L5", "TAHA-BOT-N6Q1D8X3", "TAHA-BOT-F9P5K2V7", "TAHA-BOT-W3L8C6R1",
-            "TAHA-BOT-J7M4X9Q2", "TAHA-BOT-S5V1N8D6", "TAHA-BOT-E8K6P3Y9", "TAHA-BOT-U2R7L4C5", "TAHA-BOT-G6N9X1V3",
-            "TAHA-BOT-T3Q5M8K7", "TAHA-BOT-A9D2P4R6", "TAHA-BOT-X1C8N7L3", "TAHA-BOT-R4V9K5Q2", "TAHA-BOT-H7M3Y6D1",
-            "TAHA-BOT-P2L8X5C9", "TAHA-BOT-K9Q4R7N1", "TAHA-BOT-M3D6V8P5", "TAHA-BOT-Z7X2K4L9", "TAHA-BOT-B5N8Q1R3",
-            "TAHA-BOT-Q9C4M6Y2", "TAHA-BOT-V1P7D5K8", "TAHA-BOT-L8R2X6N4", "TAHA-BOT-D3M9Q7C1", "TAHA-BOT-Y5K1P8V6",
-            "TAHA-BOT-C2X7R9L4", "TAHA-BOT-N9Q5D3M8", "TAHA-BOT-F6P2K7X9", "TAHA-BOT-W4L9V1C6", "TAHA-BOT-J8M3R5Q7",
-            "TAHA-BOT-S1N6X8D4", "TAHA-BOT-E7K2P9L5", "TAHA-BOT-U5Q8M4R1", "TAHA-BOT-G9V3C7N2", "TAHA-BOT-T6D1X5K8"
-        ];
-
-        // الكود العام المعين لـ 5 نقاط
-        const EXCEPTION_CODES = ["TAHA-FILES-SKS"];
-
-        let currentUser = null;
-        const syncChannel = new BroadcastChannel('points_sync_channel');
-
-        window.onload = function() {
-            checkReferralParam();
-            loadSession();
-            updateGlobalStats();
-            
-            window.addEventListener('storage', handleStorageChange);
-            syncChannel.onmessage = function(e) {
-                if (currentUser && e.data && e.data.email === currentUser.email) {
-                    currentUser.points = e.data.points;
-                    currentUser.isBanned = e.data.isBanned || false;
-                    if (currentUser.isBanned) {
-                        showToast("تم حظر هذا الحساب من قبل الأدمن!");
-                        logout();
-                    } else {
-                        updateUI();
-                    }
-                }
-                updateGlobalStats();
-            };
-        };
-
-        function updateGlobalStats() {
-            let totalUsers = 0;
-            let totalBuyers = 0;
-            let totalPoints = 0;
-
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                if (key.startsWith('user_')) {
-                    try {
-                        let user = JSON.parse(localStorage.getItem(key));
-                        if (user) {
-                            totalUsers++;
-                            const isUserAdmin = ADMIN_EMAILS.includes(user.email.toLowerCase());
-                            if (!isUserAdmin) {
-                                totalPoints += (user.points || 0);
-                            }
-                            if (user.hasPurchased) totalBuyers++;
-                        }
-                    } catch(e){}
-                }
-            }
-
-            document.getElementById('stat-total-users').innerText = totalUsers;
-            document.getElementById('stat-total-buyers').innerText = totalBuyers;
-            document.getElementById('stat-total-points').innerText = totalPoints;
-        }
-
-        function handleStorageChange(e) {
-            updateGlobalStats();
-            if (currentUser && e.key === 'user_' + currentUser.id) {
-                const updatedUser = JSON.parse(e.newValue);
-                if (updatedUser) {
-                    if (updatedUser.isBanned) {
-                        showToast("تم حظر حسابك!");
-                        logout();
-                        return;
-                    }
-                    currentUser = updatedUser;
-                    updateUI();
-                }
-            }
-        }
-
-        function loginWithGmail() {
-            const inputField = document.getElementById('login-email-input');
-            const userEmail = inputField.value.trim().toLowerCase();
-            
-            if (!userEmail || !userEmail.includes("@")) {
-                showToast("يرجى إدخال بريد Gmail صحيح!");
-                return;
-            }
-
-            const userId = btoa(userEmail).replace(/=/g, '');
-            let userData = JSON.parse(localStorage.getItem('user_' + userId));
-
-            if (!userData) {
-                userData = {
-                    email: userEmail,
-                    id: userId,
-                    points: 0,
-                    claimedKeys: [],
-                    usedShortenerCodes: [],
-                    usedPromoCodesList: [],
-                    lastDailyClaim: 0,
-                    lastGamePlay: 0,
-                    hasPurchased: false,
-                    isBanned: false,
-                    hasUnlockedBot: false,
-                    refCode: userId.substring(0, 6)
-                };
-
-                const inviterId = localStorage.getItem('pending_inviter');
-                if (inviterId && inviterId !== userId) {
-                    rewardInviter(inviterId);
-                    localStorage.removeItem('pending_inviter');
-                }
-            } else {
-                if (userData.isBanned) {
-                    showToast("هذا الحساب محظور من قبل إدارة المتجر!");
-                    return;
-                }
-                if (!userData.usedShortenerCodes) userData.usedShortenerCodes = [];
-                if (!userData.usedPromoCodesList) userData.usedPromoCodesList = [];
-                if (!userData.lastDailyClaim) userData.lastDailyClaim = 0;
-                if (!userData.lastGamePlay) userData.lastGamePlay = 0;
-            }
-
-            currentUser = userData;
-            saveUserData();
-            
-            const isAdmin = ADMIN_EMAILS.includes(currentUser.email.toLowerCase());
-            document.getElementById('auth-screen').style.display = 'none';
-
-            if (!isAdmin && !currentUser.hasUnlockedBot) {
-                document.getElementById('verify-screen').style.display = 'block';
-            } else {
-                showMainApp();
-            }
-
-            showToast("تم تسجيل الدخول بنجاح!");
-        }
-
-        function verifyAndUnlock() {
-            const inputCode = document.getElementById('initial-verify-code').value.trim();
-            if (inputCode === '6768') {
-                currentUser.hasUnlockedBot = true;
-                if (!currentUser.usedShortenerCodes.includes('6768')) {
-                    currentUser.usedShortenerCodes.push('6768');
-                    currentUser.points += 7;
-                }
-                saveUserData();
-                document.getElementById('verify-screen').style.display = 'none';
-                showMainApp();
-                showToast("تم تفعيل البوت وإضافة 7 نقاط بنجاح!");
-            } else {
-                showToast("الكود غير صحيح! اختصر الرابط واجلب الكود الصحيح.");
-            }
-        }
-
-        function checkReferralParam() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const ref = urlParams.get('ref');
-            if (ref) localStorage.setItem('pending_inviter', ref);
-        }
-
-        function rewardInviter(inviterId) {
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                if (key.startsWith('user_')) {
-                    let user = JSON.parse(localStorage.getItem(key));
-                    if (user.refCode === inviterId) {
-                        user.points += 1;
-                        localStorage.setItem(key, JSON.stringify(user));
-                        syncChannel.postMessage({ email: user.email, points: user.points });
-                        break;
-                    }
-                }
-            }
-        }
-
-        function saveUserData() {
-            if (currentUser) {
-                localStorage.setItem('user_' + currentUser.id, JSON.stringify(currentUser));
-                localStorage.setItem('active_session', currentUser.id);
-                syncChannel.postMessage({ email: currentUser.email, points: currentUser.points, isBanned: currentUser.isBanned });
-                updateUI();
-                updateGlobalStats();
-            }
-        }
-
-        function loadSession() {
-            const activeId = localStorage.getItem('active_session');
-            if (activeId) {
-                const userDataStr = localStorage.getItem('user_' + activeId);
-                if (userDataStr) {
-                    currentUser = JSON.parse(userDataStr);
-                    if (currentUser.isBanned) {
-                        logout();
-                        return;
-                    }
-                    if (!currentUser.usedShortenerCodes) currentUser.usedShortenerCodes = [];
-                    if (!currentUser.usedPromoCodesList) currentUser.usedPromoCodesList = [];
-                    if (!currentUser.lastGamePlay) currentUser.lastGamePlay = 0;
-
-                    const isAdmin = ADMIN_EMAILS.includes(currentUser.email.toLowerCase());
-                    document.getElementById('auth-screen').style.display = 'none';
-
-                    if (!isAdmin && !currentUser.hasUnlockedBot) {
-                        document.getElementById('verify-screen').style.display = 'block';
-                    } else {
-                        showMainApp();
-                    }
-                }
-            }
-        }
-
-        function showMainApp() {
-            document.getElementById('auth-screen').style.display = 'none';
-            document.getElementById('verify-screen').style.display = 'none';
-            document.getElementById('main-app').style.display = 'block';
-            
-            let currentHost = window.location.origin;
-            if (!currentHost.startsWith('https://')) {
-                currentHost = 'https://' + window.location.host;
-            }
-            const refUrl = `${currentHost}${window.location.pathname}?ref=${currentUser.refCode}`;
-            document.getElementById('ref-link-input').value = refUrl;
-            
-            const isMainAdmin = currentUser.email.toLowerCase() === MAIN_ADMIN_EMAIL.toLowerCase();
-            const isAdmin = ADMIN_EMAILS.includes(currentUser.email.toLowerCase());
-
-            if (isMainAdmin) {
-                document.getElementById('admin-panel').style.display = 'block';
-                document.getElementById('super-admin-panel').style.display = 'block';
-                document.getElementById('user-role').innerText = "المالك الرئيسي 👑";
-                document.getElementById('user-role').style.color = "#ff2a2a";
-            } else if (isAdmin) {
-                document.getElementById('admin-panel').style.display = 'block';
-                document.getElementById('super-admin-panel').style.display = 'none';
-                document.getElementById('user-role').innerText = "مشرف / أدمن 🛡️";
-                document.getElementById('user-role').style.color = "#ffc107";
-            } else {
-                document.getElementById('admin-panel').style.display = 'none';
-                document.getElementById('super-admin-panel').style.display = 'none';
-                document.getElementById('user-role').innerText = "مستخدم مسجل";
-                document.getElementById('user-role').style.color = "#8b949e";
-            }
-
-            updateUI();
-        }
-
-        function openShortLink(url) {
-            window.open(url, "_blank");
-            showToast("تخطى الاختصار واحصل على الكود ثم أدخله بالأسفل.");
-        }
-
-        function redeemCode(targetCode, inputId) {
-            const codeInput = document.getElementById(inputId).value.trim();
-
-            if (!codeInput) {
-                showToast("يرجى كتابة الكود أولاً!");
-                return;
-            }
-
-            if (codeInput !== targetCode) {
-                showToast("الكود غير صحيح! تأكد منه وحاول مجدداً.");
-                return;
-            }
-
-            if (currentUser.usedShortenerCodes && currentUser.usedShortenerCodes.includes(targetCode)) {
-                showToast("عذراً، لقد استخدمت هذا الكود بالفعل!");
-                return;
-            }
-
-            if (!currentUser.usedShortenerCodes) currentUser.usedShortenerCodes = [];
-            currentUser.usedShortenerCodes.push(targetCode);
-            currentUser.points += 7;
-            saveUserData();
-
-            document.getElementById(inputId).value = '';
-            showToast("كود صحيح! تم إضافة 7 نقاط للحساب بنجاح 🎉");
-        }
-
-        // الهدية اليومية
-        function claimDailyReward() {
-            const now = Date.now();
-            const cooldown = 24 * 60 * 60 * 1000;
-
-            if (currentUser.lastDailyClaim && (now - currentUser.lastDailyClaim < cooldown)) {
-                const remainingHours = Math.ceil((cooldown - (now - currentUser.lastDailyClaim)) / (1000 * 60 * 60));
-                showToast(`لقد استلمت الهدية اليومية بالفعل! عد بعد ${remainingHours} ساعة.`);
-                return;
-            }
-
-            currentUser.lastDailyClaim = now;
-            currentUser.points += 4;
-            saveUserData();
-            showToast("تهانينا! حصلت على 4 نقاط كهدية يومية 🎉");
-        }
-
-        // استبدال الأكواد الخاصة
-        function redeemSpecialCode() {
-            const codeInput = document.getElementById('special-code-input').value.trim();
-
-            if (!codeInput) {
-                showToast("يرجى إدخال الكود أولاً!");
-                return;
-            }
-
-            // الكود العام (يعطي 5 نقاط)
-            if (EXCEPTION_CODES.includes(codeInput)) {
-                if (currentUser.usedPromoCodesList && currentUser.usedPromoCodesList.includes(codeInput)) {
-                    showToast("لقد استعملت هذا الكود الخاص من قبل!");
-                    return;
-                }
-                if (!currentUser.usedPromoCodesList) currentUser.usedPromoCodesList = [];
-                currentUser.usedPromoCodesList.push(codeInput);
-                currentUser.points += 5;
-                saveUserData();
-                document.getElementById('special-code-input').value = '';
-                showToast("تم استخدام الكود بنجاح والحصول على 5 نقاط! 😍❤️");
-                return;
-            }
-
-            // للأكواد الفردية
-            let usedGlobalCodes = JSON.parse(localStorage.getItem('used_promo_codes')) || [];
-
-            if (usedGlobalCodes.includes(codeInput)) {
-                showToast("عذراً، هذا الكود تم استخدامه سابقاً بواسطة شخص آخر!");
-                return;
-            }
-
-            if (validPromoCodes.includes(codeInput)) {
-                usedGlobalCodes.push(codeInput);
-                localStorage.setItem('used_promo_codes', JSON.stringify(usedGlobalCodes));
-
-                currentUser.points += 3;
-                saveUserData();
-
-                document.getElementById('special-code-input').value = '';
-                showToast("تم قبول الكود والحصول على 3 نقاط بنجاح!");
-            } else {
-                showToast("الكود الخاص غير صحيح!");
-            }
-        }
-
-        // --- وظائف الأدمن ---
-        function adminAddPoints() {
-            const targetEmail = document.getElementById('target-email').value.trim().toLowerCase();
-            const pointsToAdd = parseInt(document.getElementById('target-points').value);
-
-            if (!targetEmail || isNaN(pointsToAdd) || pointsToAdd <= 0) {
-                showToast("أدخل بريد ونقاط صحيحة!");
-                return;
-            }
-
-            const targetUserId = btoa(targetEmail).replace(/=/g, '');
-            let targetUser = JSON.parse(localStorage.getItem('user_' + targetUserId));
-
-            if (!targetUser) {
-                showToast("هذا البريد غير مسجل بالنظام!");
-                return;
-            }
-
-            targetUser.points += pointsToAdd;
-            localStorage.setItem('user_' + targetUserId, JSON.stringify(targetUser));
-            
-            syncChannel.postMessage({ email: targetUser.email, points: targetUser.points });
-
-            if (targetEmail === currentUser.email) {
-                currentUser.points = targetUser.points;
-                updateUI();
-            }
-
-            showToast(`تم إضافة ${pointsToAdd} نقطة إلى ${targetEmail}`);
-            document.getElementById('target-email').value = '';
-            document.getElementById('target-points').value = '';
-        }
-
-        function adminRemovePoints() {
-            if (currentUser.email.toLowerCase() !== MAIN_ADMIN_EMAIL.toLowerCase()) return;
-
-            const targetEmail = document.getElementById('super-target-email').value.trim().toLowerCase();
-            const pointsToRemove = parseInt(document.getElementById('super-remove-points').value);
-
-            if (!targetEmail || isNaN(pointsToRemove) || pointsToRemove <= 0) {
-                showToast("أدخل بريد ونقاط صحيحة للخصم!");
-                return;
-            }
-
-            const targetUserId = btoa(targetEmail).replace(/=/g, '');
-            let targetUser = JSON.parse(localStorage.getItem('user_' + targetUserId));
-
-            if (!targetUser) {
-                showToast("هذا البريد غير مسجل!");
-                return;
-            }
-
-            targetUser.points = Math.max(0, targetUser.points - pointsToRemove);
-            localStorage.setItem('user_' + targetUserId, JSON.stringify(targetUser));
-            syncChannel.postMessage({ email: targetUser.email, points: targetUser.points });
-
-            if (targetEmail === currentUser.email) {
-                currentUser.points = targetUser.points;
-                updateUI();
-            }
-
-            showToast(`تم خصم ${pointsToRemove} نقطة من ${targetEmail}`);
-        }
-
-        function adminBanUser(shouldBan) {
-            if (currentUser.email.toLowerCase() !== MAIN_ADMIN_EMAIL.toLowerCase()) return;
-
-            const targetEmail = document.getElementById('super-target-email').value.trim().toLowerCase();
-            if (!targetEmail) {
-                showToast("أدخل بريد المستخدم!");
-                return;
-            }
-
-            if (targetEmail === MAIN_ADMIN_EMAIL) {
-                showToast("لا يمكنك حظر المالك الرئيسي!");
-                return;
-            }
-
-            const targetUserId = btoa(targetEmail).replace(/=/g, '');
-            let targetUser = JSON.parse(localStorage.getItem('user_' + targetUserId));
-
-            if (!targetUser) {
-                showToast("هذا البريد غير مسجل!");
-                return;
-            }
-
-            targetUser.isBanned = shouldBan;
-            localStorage.setItem('user_' + targetUserId, JSON.stringify(targetUser));
-            syncChannel.postMessage({ email: targetUser.email, points: targetUser.points, isBanned: shouldBan });
-
-            showToast(shouldBan ? `تم حظر ${targetEmail} بنجاح` : `تم إلغاء حظر ${targetEmail}`);
-        }
-
-        function updateUI() {
-            document.getElementById('user-email').innerText = currentUser.email;
-            document.getElementById('user-points').innerText = currentUser.points;
-        }
-
-        // شراء العرض الأول: HOLOGRAM AND WALLGLO VIP
-        function buyOffer1() {
-            if (currentUser.points < 40) {
-                showToast("عذراً! تحتاج إلى 40 نقطة لشراء هذا العرض.");
-                return;
-            }
-
-            currentUser.points -= 40;
-            currentUser.hasPurchased = true;
-            saveUserData();
-
-            const keyBox = document.getElementById('key-display-1');
-            keyBox.style.display = 'block';
-            keyBox.innerHTML = `رابط التحميل الخاص بك:<br><a href="${OFFER1_LINK}" target="_blank">${OFFER1_LINK}</a>`;
-
-            showToast("تم شراء العرض بنجاح! تم إظهار رابط التحميل.");
-        }
-
-        // شراء العرض الثاني: KEY BALA MOD VIP
-        function buyOffer2() {
-            if (currentUser.points < 40) {
-                showToast("عذراً! تحتاج إلى 40 نقطة لشراء هذا العرض.");
-                return;
-            }
-
-            currentUser.points -= 40;
-            currentUser.hasPurchased = true;
-            saveUserData();
-
-            const keyBox = document.getElementById('key-display-2');
-            keyBox.style.display = 'block';
-            keyBox.innerText = "RANDOM";
-
-            showToast("تم شراء العرض بنجاح!");
-        }
-
-        // --- لعبة الذاكرة ---
-        let firstCard = null;
-        let secondCard = null;
-        let lockBoard = false;
-        let earnedGamePoints = 0;
-        let remainingAttempts = 4;
-        const memoryIcons = ['🔥', '⚡', '💀', '👑', '🔥', '⚡', '💀', '👑'];
-
-        function startMemoryGame() {
-            const now = Date.now();
-            const cooldown = 24 * 60 * 60 * 1000;
-
-            if (currentUser.lastGamePlay && (now - currentUser.lastGamePlay < cooldown)) {
-                const remainingHours = Math.ceil((cooldown - (now - currentUser.lastGamePlay)) / (1000 * 60 * 60));
-                showToast(`لقد لعبت اليوم بالفعل! عد بعد ${remainingHours} ساعة.`);
-                return;
-            }
-
-            currentUser.lastGamePlay = now;
-            saveUserData();
-
-            const grid = document.getElementById('memory-grid');
-            grid.innerHTML = '';
-            earnedGamePoints = 0;
-            remainingAttempts = 4;
-            firstCard = null;
-            secondCard = null;
-            lockBoard = false;
-
-            updateGameStats();
-
-            const shuffledIcons = [...memoryIcons].sort(() => 0.5 - Math.random());
-            shuffledIcons.forEach(icon => {
-                const card = document.createElement('div');
-                card.classList.add('memory-card');
-                card.dataset.icon = icon;
-                card.innerText = '❓';
-                card.onclick = () => flipCard(card);
-                grid.appendChild(card);
-            });
-
-            document.getElementById('game-board').style.display = 'block';
-            showToast("لديك 4 محاولات! كل زوج تطابقه يمنحك نقطة لحسابك.");
-        }
-
-        function flipCard(card) {
-            if (lockBoard || card === firstCard || card.classList.contains('flipped') || remainingAttempts <= 0) return;
-
-            card.classList.add('flipped');
-            card.innerText = card.dataset.icon;
-
-            if (!firstCard) {
-                firstCard = card;
-                return;
-            }
-
-            secondCard = card;
-            lockBoard = true;
-            remainingAttempts--;
-            updateGameStats();
-
-            if (firstCard.dataset.icon === secondCard.dataset.icon) {
-                earnedGamePoints += 1;
-                currentUser.points += 1;
-                saveUserData();
-                updateGameStats();
-                showToast("إجابة صحيحة! حصلت على نقطة 🎉");
-                resetCards();
-                checkGameOver();
-            } else {
-                setTimeout(() => {
-                    firstCard.classList.remove('flipped');
-                    secondCard.classList.remove('flipped');
-                    firstCard.innerText = '❓';
-                    secondCard.innerText = '❓';
-                    resetCards();
-                    checkGameOver();
-                }, 800);
-            }
-        }
-
-        function checkGameOver() {
-            if (remainingAttempts <= 0) {
-                setTimeout(() => {
-                    showToast(`انتهت محاولات اليوم! حصلت على ${earnedGamePoints} نقطة.`);
-                    document.getElementById('game-board').style.display = 'none';
-                }, 500);
-            }
-        }
-
-        function updateGameStats() {
-            document.getElementById('game-score').innerText = earnedGamePoints;
-            document.getElementById('game-attempts').innerText = remainingAttempts;
-        }
-
-        function resetCards() {
-            [firstCard, secondCard] = [null, null];
-            lockBoard = false;
-        }
-
-        function copyRefLink() {
-            const copyText = document.getElementById("ref-link-input");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            navigator.clipboard.writeText(copyText.value);
-            showToast("تم نسخ رابط الدعوة!");
-        }
-
-        function logout() {
-            localStorage.removeItem('active_session');
-            currentUser = null;
-            document.getElementById('main-app').style.display = 'none';
-            document.getElementById('verify-screen').style.display = 'none';
-            document.getElementById('auth-screen').style.display = 'block';
-            document.getElementById('login-email-input').value = '';
-            showToast("تم تسجيل الخروج");
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById("toast");
-            toast.innerText = message;
-            toast.style.display = "block";
-            setTimeout(() => {
-                toast.style.display = "none";
-            }, 3000);
-        }
-    </script>
+<div class="card">
+  <h1>KURAMA <span>KEY</span></h1>
+  <div class="subtitle">KEY GENERATOR SYSTEM</div>
+
+  <button id="generate" onclick="generateKey()">
+    ⚙ GENERATE KEY
+  </button>
+
+  <div class="progress-info">
+    <span id="status">READY TO GENERATE</span>
+    <span id="percent">0%</span>
+  </div>
+  <div class="track">
+    <div class="bar" id="bar"></div>
+  </div>
+
+  <div class="result" id="result">
+    <p>✓ YOUR KEY IS READY</p>
+    <div class="key" id="key">KURAMA-20SAFE</div>
+    <button class="copy" onclick="copyKey()">COPY KEY</button>
+  </div>
+
+  <div class="status">KURAMA SYSTEM • V1.0</div>
+</div>
+
+<script>
+let running = false;
+
+function generateKey(){
+  if(running) return;
+  running = true;
+
+  const btn = document.getElementById("generate");
+  const bar = document.getElementById("bar");
+  const percent = document.getElementById("percent");
+  const status = document.getElementById("status");
+  const result = document.getElementById("result");
+
+  btn.disabled = true;
+  result.style.display = "none";
+
+  let progress = 0;
+  status.textContent = "GENERATING KEY...";
+
+  const timer = setInterval(() => {
+    progress++;
+    bar.style.width = progress + "%";
+    percent.textContent = progress + "%";
+
+    if(progress >= 100){
+      clearInterval(timer);
+      status.textContent = "GENERATION COMPLETE";
+      result.style.display = "block";
+      btn.textContent = "✓ KEY GENERATED";
+      running = false;
+    }
+  }, 35);
+}
+
+function copyKey(){
+  const key = document.getElementById("key").textContent;
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(key).then(() => {
+      alert("KEY COPIED: " + key);
+    }).catch(() => fallbackCopy(key));
+  } else {
+    fallbackCopy(key);
+  }
+}
+
+function fallbackCopy(key){
+  const area = document.createElement("textarea");
+  area.value = key;
+  document.body.appendChild(area);
+  area.select();
+  document.execCommand("copy");
+  area.remove();
+  alert("KEY: " + key);
+}
+</script>
 </body>
 </html>
